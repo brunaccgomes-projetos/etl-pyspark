@@ -1,26 +1,26 @@
-## INSTALAR BILBIOTECAS 
-#pip install pyspark mysql-connector-python pandas
-
-## INICIAR SESSÃO SPARK
-# exemplos MySQL e Postgresql
-
 from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
+from pyspark.sql.functions import broadcast
+
 #spark = SparkSession.builder.appName("ETL Example").getOrCreate()
-''' Certifique-se de que o JAR do driver MySQL está acessível no caminho especificado 
-#e que as credenciais e a URL estão corretas para a sua configuração do banco de dados.'''
+
+
+## INICIAR SESSÃO SPARK (exemplos MySQL e Postgresql)
+##Certifique-se de que o JAR do driver MySQL está acessível no caminho especificado 
+##e que as credenciais e a URL estão corretas para a sua configuração do banco de dados.'''
 
 # MySQL
 spark = SparkSession.builder \
     .appName("ETL Example") \
-    .config("spark.jars", "/path/to/mysql-<version>.jar") \  # Caminho para o jar do driver MySQL
-    .getOrCreate()
-
+    .config("spark.jars", "/path/to/mysql-<version>.jar") \
+    .getOrCreate() # Caminho para o jar do driver MySQL
+    
 #Postgresql
 '''
 spark = SparkSession.builder \
     .appName("ETL Example") \
-    .config("spark.jars", "/path/to/postgresql-<version>.jar") \  # Caminho para o jar do driver PostgreSQL
-    .getOrCreate()
+    .config("spark.jars", "/path/to/postgresql-<version>.jar") \
+    .getOrCreate() # Caminho para o jar do driver PostgreSQL    
 '''
 
 ## EXTRACT
@@ -56,7 +56,7 @@ df_filtered = df_csv.filter(df_csv['age'] > 30)
 df_selected = df_csv.select('name', 'age', 'salary')
 
 # Agregação e agregações avançadas: Como contagem, soma e médias.
-from pyspark.sql import functions as F
+
 
 # Agregação por grupo
 df_aggregated = df_csv.groupBy("department").agg(F.avg("salary").alias("average_salary"))
@@ -103,25 +103,29 @@ df_transformed.write.partitionBy("year").parquet("s3://bucket-name/path/")
 # Reparticionamento: Antes de operações como agregações e joins, o reparticionamento pode melhorar a performance.
 df_repartitioned = df_transformed.repartition(10)
 
-''' # Filtragem de dados antes de transformação: Evite carregar dados desnecessários. 
+# Filtragem de dados antes de transformação: Evite carregar dados desnecessários. 
 # Aplique filtros e projeções (seleção de colunas) o mais cedo possível no pipeline.
 # Broadcast Join: Se você está fazendo um join entre uma grande tabela e uma pequena tabela, 
 # você pode usar broadcast para a tabela pequena, o que pode melhorar a performance.
-'''
-from pyspark.sql.functions import broadcast
 
+# Teste com DataFrames
+df_large = spark.createDataFrame([(1, "A"), (2, "B")], ["id", "value"])
+df_small = spark.createDataFrame([(1, "X")], ["id"])
+
+# Join com broadcast
 df_joined = df_large.join(broadcast(df_small), "id")
+df_joined.show()
 
-'''# Persistência em disco: Quando os dados são grandes e você não quer que a memória se esgote, 
-use disk para persistir dados intermediários.'''
+#Persistência em disco: Quando os dados são grandes e você não quer que a memória se esgote, 
+# use disk para persistir dados intermediários.'''
 df_repartitioned.write.mode("overwrite").parquet("s3://bucket-name/path/")
 
 # Registrando DataFrame como tabela temporária
 df_csv.createOrReplaceTempView("df_table")
 
 ## 5. USO DE PYSPARK SQL
-'''# A utilização de SQL em PySpark é poderosa e pode ser feita tanto através da API SQL do PySpark 
-quanto através da execução de queries SQL diretamente no SparkSession.'''
+#A utilização de SQL em PySpark é poderosa e pode ser feita tanto através da API SQL do PySpark 
+#quanto através da execução de queries SQL diretamente no SparkSession.'''
 
 # Registrando DataFrame como tabela temporária
 df_csv.createOrReplaceTempView("df_table")
