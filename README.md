@@ -12,8 +12,6 @@ O **PySpark é uma interface em Python para o Apache Spark** e permite que você
 - **Flexibilidade:** Oferece APIs para processamento de dados em batch, SQL e machine learning.
 - **Suporte a SQL:** Utiliza o Spark SQL para consultas SQL, o que facilita a integração com outras ferramentas.
 
----
-
 ## Construindo ETL em PySpark
 
 Quando falamos de ETL (Extract, Transform, Load) com PySpark, o objetivo é construir pipelines eficientes que extraem dados de fontes, fazem transformações e os carregam para o destino.
@@ -52,8 +50,6 @@ A carga dos dados no destino pode ser feita de várias formas, incluindo salvar 
 
 A utilização de SQL em PySpark é poderosa e pode ser feita tanto através da API SQL do PySpark quanto através da execução de queries SQL diretamente no SparkSession.
 
----
-
 ## Para construir ETL's otimizados em PySpark:
 
 - **Aproveite o formato de dados Parquet.**
@@ -61,54 +57,67 @@ A utilização de SQL em PySpark é poderosa e pode ser feita tanto através da 
 - **Particione seus dados para otimizar leitura e escrita.**
 - **Execute transformações como joins e agregações com operações distribuídas e broadcast quando necessário.**
 
+---
+
 ## Especificação Técnica
 
 - **IDE:** VSCode (Visual Studio Code)
 - **Linguagem:** Python
   - **Bibliotecas (principais):** pip install pyspark mysql-connector-python pandas
-
----
-
+- OS: Windows 11
+  
 ## 🚀 Configuração e Execução
 
 ### 1. Criar o Ambiente Virtual
 
-- **1.1. Abra o terminal ou o PowerShell no Windows.**
+1.1. Abra o terminal ou o PowerShell no Windows.
 
-- **1.2. Navegue até o diretório base do projeto:**
-  cd D:\GitHub\etl-pyspark
+1.2. Navegue até o diretório base do projeto:
+ 
+`cd D:\GitHub\etl-pyspark`
 
-- **1.3. Crie o ambiente virtual:**
-  python -m venv venv
+1.3. Crie o ambiente virtual:
 
-- **1.4. Ative o ambiente virtual:**
-  venv\Scripts\activate
+`python -m venv venv`
+
+1.4. Ative o ambiente virtual:
+
+`venv\Scripts\activate`
 
 ### 2. Instalar as Dependências
 
-- **2.1. Instale as dependências do arquivo requirements.txt existente**
-  pip install -r requirements.txt
+2.1. Instale as dependências do arquivo requirements.txt existente
 
-- **2.2. OU CASO exclua o arquivo requirements.txt existente:**
-  - **2.2.1. Primeiro: Instale as dependências necessárias com pip:**
-    pip install pandas beautifulsoup4 lxml selenium webdriver-manager
-  - **2.2.2. Segundo: Gere arquivo requirements.txt**
-    pip freeze > requirements.txt
+`pip install -r requirements.txt`
+
+2.2. OU NÃO EXISTE o arquivo requirements.txt:
+
+2.2.1. Primeiro: Instale as dependências necessárias com pip:
+
+`pip install pandas beautifulsoup4 lxml selenium webdriver-manager`
+  
+2.2.2. Segundo: Gere arquivo requirements.txt
+
+`pip freeze > requirements.txt`
 
 ### 3. Executar o Script
 
-- **3.1. Navegue até o diretório onde está o script:**
-  cd D:\GitHub\etl-pyspark
+3.1. Navegue até o diretório onde está o script:
 
-- **3.2. Execute o script com o Python:**
-  python etl-otimizado.py
+`cd D:\GitHub\etl-pyspark`
+
+3.2. Execute o script com o Python:
+
+`python etl-otimizado.py`
 
 ### 4. Manutenção do Ambiente
 
-- **4.1. Para Desativar o Ambiente:**
-  **Quando terminar de usar o ambiente virtual, você pode desativá-lo com o comando:**
-  deactivate
+4.1. Para Desativar o Ambiente:
+Quando terminar de usar o ambiente virtual, você pode desativá-lo com o comando:
 
-- **4.2. Para Reativar o Ambiente:**
-  **Sempre que quiser executar novamente, reative o ambiente com:**
-  venv\Scripts\activate
+`deactivate`
+
+4.2. Para Reativar o Ambiente:
+Sempre que quiser executar novamente, reative o ambiente com:
+
+`venv\Scripts\activate` 
