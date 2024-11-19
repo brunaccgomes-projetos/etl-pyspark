@@ -1,4 +1,4 @@
-# Modelo para construção de ETL Otimizado em PySpark
+# 🛠️ Construção de ETL Otimizado com PySpark
 
 ## Apache Spark
 
@@ -11,6 +11,8 @@ O **PySpark é uma interface em Python para o Apache Spark** e permite que você
 - **Velocidade:** Em comparação com outras tecnologias de processamento, o Spark pode ser muito mais rápido devido à sua arquitetura em memória.
 - **Flexibilidade:** Oferece APIs para processamento de dados em batch, SQL e machine learning.
 - **Suporte a SQL:** Utiliza o Spark SQL para consultas SQL, o que facilita a integração com outras ferramentas.
+
+---
 
 ## Construindo ETL em PySpark
 
@@ -50,6 +52,8 @@ A carga dos dados no destino pode ser feita de várias formas, incluindo salvar 
 
 A utilização de SQL em PySpark é poderosa e pode ser feita tanto através da API SQL do PySpark quanto através da execução de queries SQL diretamente no SparkSession.
 
+---
+
 ## Para construir ETL's otimizados em PySpark:
 
 - **Aproveite o formato de dados Parquet.**
@@ -63,7 +67,9 @@ A utilização de SQL em PySpark é poderosa e pode ser feita tanto através da 
 - **Linguagem:** Python
   - **Bibliotecas (principais):** pip install pyspark mysql-connector-python pandas
 
-## Configuração e Execução
+---
+
+## 🚀 Configuração e Execução
 
 ### 1. Criar o Ambiente Virtual
 
